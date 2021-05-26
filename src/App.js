@@ -1,6 +1,9 @@
 import './App.css';
 import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import { useHistory, useLocation, useParams, useRouteMatch } from "react-router-dom";
+import Home from "./components/Home";
+import User from "./components/User";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -10,24 +13,26 @@ function App() {
           <p>React Router Hooks</p>
           <ul>
             <li>
-              <NavLink to="/" activeClassName="active">Home</NavLink>
+              <NavLink exact to="/home">Home</NavLink>
+              
             </li>
             <li>
-              <NavLink to="/about" activeClassName="active">About</NavLink>
+              <NavLink exact to="/user">User</NavLink>
             </li>
             <li>
-              <NavLink to="/contact" activeClassName="active">Contact</NavLink>
+              <NavLink exact to="/contact">Contact</NavLink>
             </li>
           </ul>
           <Switch>
-            <Route exact path="/">
-              <h1>Home</h1>
+            <Route exact path="/home">
+            <Home />
+              {/* <h1>Home</h1> */}
             </Route>
-            <Route exact path="/about">
-              <h1>about</h1>
+            <Route exact path="/user/:name">
+              <User />
             </Route>
             <Route exact path="/contact">
-              <h1>contact</h1>
+              <Contact />
             </Route>
           </Switch>
         </header>
